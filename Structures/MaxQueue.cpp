@@ -1,4 +1,4 @@
-template <class T, class C = std::less<T>>
+template <class T, class C = less<T>> //use greater for MinQueue
 struct MaxQueue {
 	MaxQueue() {
 		clear();
@@ -10,7 +10,7 @@ struct MaxQueue {
 	}
 
 	void push(T x) {
-		std::pair<int, T> nxt(1, x);
+		pair<int, T> nxt(1, x);
 		while(q.size() > id && cmp(q.back().second, x)) {
 			nxt.first += q.back().first;
 			q.pop_back();
@@ -29,7 +29,7 @@ struct MaxQueue {
 		}
 	}
 private:
-	std::vector<std::pair<int, T>> q;
+	vector<pair<int, T>> q;
 	int id;
 	C cmp;
 };
