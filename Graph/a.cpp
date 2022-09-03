@@ -11,57 +11,45 @@ const int MOD = 1e9 + 7;
 const int MAXN = 2e5 + 5;
 const ll INF = 2e18;
 
-const int MAXL = 20;
-int dep[MAXN], tab[MAXL][MAXN];
 vector<int> v[MAXN];
-
-void dfs(int node, int pai = 0) {
-    dep[node] = dep[pai] + 1;
-    tab[0][node] = pai;
-    for (int x : v[node]) {
-        if (x != pai) dfs(x, node);
-    }
-}
-
-void calcTab(int n) {
-    for (int i = 1; i < MAXL; i++) {
-        for (int j = 1; j <= n; j++) tab[i][j] = tab[i - 1][tab[i - 1][j]]; 
-    }
-}
-
-int lca(int a, int b) {
-    if (dep[a] < dep[b]) swap(a, b);
-    for (int i = MAXL - 1; i >= 0; i--) {
-        if (dep[a] - (1 << i) >= dep[b]) {
-            a = tab[i][a];
-        }
-    }
-    if (a == b) return a;
-    for (int i = MAXL - 1; i >= 0; i--) {
-        if (tab[i][a] != tab[i][b]) {
-            a = tab[i][a];
-            b = tab[i][b];
-        }
-    }
-    return tab[0][a];
+int n;
+ 
+int bfs(int node, bool flag) {
+    // flag = true se estou fazendo a segunda BFS
+	
+    queue<pii> q;
+	vector<int> check(n+1);
+	check[node] = 1;
+	q.push({node, 0});
+	int resp = 0, fim = node;
+	while (!q.empty()) {
+		pii atual = q.front();
+		q.pop();
+		for (int x : v[atual.first]) {
+			if (!check[x]) {
+				check[x] = 1;
+				q.push({x, atual.second+1});
+				if (atual.second + 1 > resp) {
+					resp = atual.second + 1;
+					fim = x;
+				}
+			}
+		}
+	}
+	return (flag ? resp : fim);
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int n, q;
-	cin >> n >> q;
-	for (int i = 2; i <= n; i++) {
-		cin >> tab[0][i];
-		v[i].push_back(tab[0][i]);
-		v[tab[0][i]].push_back(i);
-	}
-	dfs(1);
-	calcTab(n);
-	int a, b;
-	for (int i = 0; i < q; i++) {
+    int a, b;
+	cin >> n;
+	for (int i = 0; i < n - 1; i++) {
 		cin >> a >> b;
-		cout << lca(a, b) << '\n';
+		v[a].push_back(b);
+		v[b].push_back(a);
 	}
+	a = bfs(1, 0);
+	cout << bfs(a, 1) << '\n';
     return 0;
 }
