@@ -89,15 +89,3 @@ namespace d_tree {
 		return dfs_l[u] <= dfs_l[v] && dfs_r[v] <= dfs_r[u];
 	}
 };
-
-int sz[MAXN];
-
-void dfs(int node, int pai = -1) {
-	sz[node] = 1;
-	for (int x : d_tree::tree[node]) {
-		if (x != pai) {
-			dfs(x, node);
-			sz[node] += sz[x];
-		}
-	}
-}
