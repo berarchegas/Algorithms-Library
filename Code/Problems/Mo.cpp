@@ -1,3 +1,6 @@
+// Mo
+//
+
 const int X = 700;
  
 struct que {

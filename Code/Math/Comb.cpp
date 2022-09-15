@@ -1,3 +1,5 @@
+// Comb Template
+//
 // template para problemas de combinatoria
 int fat[MAXN], inv[MAXN];
 

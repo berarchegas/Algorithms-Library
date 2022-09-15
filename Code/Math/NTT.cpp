@@ -1,3 +1,5 @@
+// NTT
+// 
 /**
  * NTT do KACTL
  * Description: ntt(a) computes $\hat f(k) = \sum_x a[x] g^{xk}$ for all $k$, where $g=\text{root}^{(MOD-1)/N}$.

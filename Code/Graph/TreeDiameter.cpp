@@ -1,4 +1,5 @@
-// calcula diametro
+// Tree diameter
+//
 // int a = bfs(1, 0);
 // int diametro = bfs(a, 1);
 

@@ -1,3 +1,9 @@
+// Dynamic Connectivity
+//
+// Two types of queries:
+// A new edge is created between nodes a and b
+// An existing edge between nodes a and b is removed.
+
 #include <bits/stdc++.h>
     
 using namespace std;
@@ -10,10 +16,6 @@ mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
 const int MOD = 1e9 + 7;
 const int MAXN = 1e5 + 5;
 const int INF = 2e9;
- 
-// Two types of queries:
-// A new edge is created between nodes a and b
-// An existing edge between nodes a and b is removed.
 
 int ans[MAXN], pai[MAXN], sz[MAXN], resp;
 map<pii, int> mp;

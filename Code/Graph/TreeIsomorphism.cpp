@@ -1,3 +1,5 @@
+// Tree Isomorphism
+//
 // Acha se duas arvores enraizadas sao isomorficas
 // Usa hashing 
 // Se nao forem enraizadas basta achar os centroides

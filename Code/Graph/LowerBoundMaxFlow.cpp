@@ -1,3 +1,16 @@
+// Lower Bound Max Flow
+//
+// Max flow com lower bound nas arestas
+// 
+// add(a, b, l, r):
+// 	adiciona aresta de a pra b, onde precisa passar f de fluxo, l <= f <= r
+// add(a, b, c):
+// 	adiciona aresta de a pra b com capacidade c
+//
+// Mesma complexidade do Dinic
+
+// INF tem que ser int, de preferencia 1e9
+
 #include <bits/stdc++.h>
  
 using namespace std;
@@ -10,17 +23,6 @@ mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
 const int MOD = 1e9 + 7;
 const int MAXN = 2e5 + 5;
 const int INF = 1e9;
-
-// Max flow com lower bound nas arestas
-// 
-// add(a, b, l, r):
-// 	adiciona aresta de a pra b, onde precisa passar f de fluxo, l <= f <= r
-// add(a, b, c):
-// 	adiciona aresta de a pra b com capacidade c
-//
-// Mesma complexidade do Dinic
-
-// INF tem que ser int, de preferencia 1e9
 
 struct dinic {
 	const bool scaling = false;
