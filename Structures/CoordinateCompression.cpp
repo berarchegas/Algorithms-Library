@@ -14,7 +14,7 @@ public:
 
 	int getL(T x) { return lower_bound(arr.begin(), arr.end(), x) - arr.begin(); }
 	int getR(T x) { return upper_bound(arr.begin(), arr.end(), x) - arr.begin(); }
-    int getVal(int id) { return arr[id]; }
+    T getVal(int id) { return arr[id]; }
 	int size() const { return (int) arr.size(); }
 private:
 	vector<T> arr;
