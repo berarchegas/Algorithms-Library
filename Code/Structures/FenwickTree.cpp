@@ -1,3 +1,6 @@
+//Fenwick Tree (BIT)
+//
+
 template <class T>
 class FenwickTree {
 public:

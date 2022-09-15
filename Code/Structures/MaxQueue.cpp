@@ -1,4 +1,7 @@
-template <class T, class C = less<T>> //use greater for MinQueue
+// Max Queue
+// use greater instead of less for Min Queue
+
+template <class T, class C = less<T>>
 struct MaxQueue {
 	MaxQueue() {
 		clear();

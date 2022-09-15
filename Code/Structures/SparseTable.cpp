@@ -1,3 +1,5 @@
+// Sparse Table
+//
 // don't know how to use without FastRMQ.cpp
 
 template<class T>

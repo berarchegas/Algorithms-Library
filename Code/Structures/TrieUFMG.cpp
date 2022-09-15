@@ -1,4 +1,3 @@
-
 // Trie
 //
 // trie T() constroi uma trie para o alfabeto das letras minusculas

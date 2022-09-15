@@ -1,3 +1,5 @@
+//Coordinate Compression
+//
 // 0 indexed
 // if x is in arr, getL returns the compressed id of x and getR returns id + 1
 // getR is unnecessary most times
