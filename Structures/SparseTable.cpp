@@ -1,3 +1,5 @@
+// don't know how to use without FastRMQ.cpp
+
 template<class T>
 struct Minimizer {
 	T operator() (T a, T b) { return min(a, b); }
