@@ -3,7 +3,7 @@
 
 using namespace std;
 
-string path = "../Codigo/";
+string path = "../Code/";
 
 void printa_arquivo(string s, bool skip = false) {
 	ifstream fin(s.c_str());

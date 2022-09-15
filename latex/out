@@ -1,0 +1,1456 @@
+\documentclass[12pt, a4paper, twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage{comment}
+\usepackage{datetime}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage[all]{xy}
+\usepackage{graphicx}
+\addtolength{\parskip}{.5\baselineskip}
+
+%aqui comeca o que eu fiz de verdade, o resto veio e eu to com medo de tirar
+\usepackage{listings} %biblioteca pro codigo
+\usepackage{color}    %deixa o codigo colorido bonitinho
+\usepackage[landscape, left=1cm, right=1cm, top=1cm, bottom=2cm]{geometry} %pra deixar a margem do jeito que o brasil gosta
+
+\definecolor{gray}{rgb}{0.4, 0.4, 0.4} %cor pros comentarios
+%\renewcommand{\footnotesize}{\small} %isso eh pra mudar o tamanho da fonte do codigo
+\setlength{\columnseprule}{0.2pt} %barra separando as duas colunas
+\setlength{\columnsep}{15pt} %distancia do texto ate a barra
+
+\lstset{ %opcoes pro codigo
+breaklines=true,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+basicstyle=\footnotesize,
+breakatwhitespace=true,
+language=C++,
+%frame=single, % nao sei se gosto disso ou nao
+numbers=none,
+rulecolor=\color{black},
+showstringspaces=false
+stringstyle=\color{blue},
+tabsize=4,
+basicstyle=\ttfamily\footnotesize, % fonte
+literate={~} {$\sim$}{1} % ~ bonitinho
+}
+
+\title{[UFMG] Summergimurne?}
+\author{Bruno Monteiro, Emanuel Silva e Bernardo Amorim}
+
+
+\begin{document}
+\twocolumn
+\date{} %tira a data
+\maketitle
+
+
+\renewcommand{\contentsname}{Índice} %troca o nome do indice para indice
+\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%%%
+%
+% Graph
+%
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Graph}
+
+\subsection{Acha se duas arvores enraizadas sao isomorficas}
+\begin{lstlisting}
+// Se nao forem enraizadas basta achar os centroides
+// ai tenta ver se uma arvore enraizada em um centroide eh igual a outra enraizada em um dos 2 centroides
+#include <bits/stdc++.h>
+    
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+    
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 1e5 + 5;
+const ll INF = 2e18;
+ 
+vector<int> v[2][MAXN];
+int id = 0;
+map<vector<int>, int> mp;
+ 
+int dfs(int node, int p, bool at) {
+    vector<int> val;
+    for (int x : v[at][node]) {
+        if (x != p) {
+            val.push_back(dfs(x, node, at));
+        }
+    }
+    sort(val.begin(), val.end());
+    if (!mp[val]) mp[val] = ++id;
+    return mp[val];
+}
+ 
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    while (t--) {
+        mp.clear();
+        id = 0;
+        int n, a, b;
+        cin >> n;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 1; j <= n; j++) {
+                v[i][j].clear();
+            }
+            for (int j = 0; j < n - 1; j++) {
+                cin >> a >> b;
+                v[i][a].push_back(b);
+                v[i][b].push_back(a);
+            }
+        }
+        int s0 = dfs(1, -1, 0);
+        int s1 = dfs(1, -1, 1);
+        cout << (s0 == s1 ? "YES\n" : "NO\n");
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Algoritmo Hungaro}
+\begin{lstlisting}
+// Resolve o problema de assignment (matriz n x n)
+// Colocar os valores da matriz em 'a' (pode < 0)
+// assignment() retorna um par com o valor do
+// assignment minimo, e a coluna escolhida por cada linha
+//
+// O(n^3)
+// 64c53e
+
+template<typename T> struct hungarian {
+	int n;
+	vector<vector<T>> a;
+	vector<T> u, v;
+	vector<int> p, way;
+	T inf;
+
+	hungarian(int n_) : n(n_), u(n+1), v(n+1), p(n+1), way(n+1) {
+		a = vector<vector<T>>(n, vector<T>(n));
+		inf = numeric_limits<T>::max();
+	}
+	pair<T, vector<int>> assignment() {
+		for (int i = 1; i <= n; i++) {
+			p[0] = i;
+			int j0 = 0;
+			vector<T> minv(n+1, inf);
+			vector<int> used(n+1, 0);
+			do {
+				used[j0] = true;
+				int i0 = p[j0], j1 = -1;
+				T delta = inf;
+				for (int j = 1; j <= n; j++) if (!used[j]) {
+					T cur = a[i0-1][j-1] - u[i0] - v[j];
+					if (cur < minv[j]) minv[j] = cur, way[j] = j0;
+					if (minv[j] < delta) delta = minv[j], j1 = j;
+				}
+				for (int j = 0; j <= n; j++)
+					if (used[j]) u[p[j]] += delta, v[j] -= delta;
+					else minv[j] -= delta;
+				j0 = j1;
+			} while (p[j0] != 0);
+			do {
+				int j1 = way[j0];
+				p[j0] = p[j1];
+				j0 = j1;
+			} while (j0);
+		}
+		vector<int> ans(n);
+		for (int j = 1; j <= n; j++) ans[p[j]-1] = j-1;
+		return make_pair(-v[0], ans);
+	}
+};
+\end{lstlisting}
+
+\subsection{calcula diametro}
+\begin{lstlisting}
+// int diametro = bfs(a, 1);
+
+vector<int> v[MAXN];
+int n;
+ 
+int bfs(int node, bool flag) {
+    // flag = true se estou fazendo a segunda BFS
+	
+    queue<pii> q;
+	vector<int> check(n+1);
+	check[node] = 1;
+	q.push({node, 0});
+	int resp = 0, fim = node;
+	while (!q.empty()) {
+		pii atual = q.front();
+		q.pop();
+		for (int x : v[atual.first]) {
+			if (!check[x]) {
+				check[x] = 1;
+				q.push({x, atual.second+1});
+				if (atual.second + 1 > resp) {
+					resp = atual.second + 1;
+					fim = x;
+				}
+			}
+		}
+	}
+	return (flag ? resp : fim);
+}
+\end{lstlisting}
+
+\subsection{Dinic}
+\begin{lstlisting}
+// O(min(m * max_flow, n^2 m))
+// Grafo com capacidades 1 -> O(sqrt(n)*m)
+// INF ta pra int
+struct dinic {
+	const bool scaling = false;
+	int lim;
+	struct edge {
+		int to, cap, rev, flow;
+		bool res;
+		edge(int to_, int cap_, int rev_, bool res_)
+			: to(to_), cap(cap_), rev(rev_), flow(0), res(res_) {}
+	};
+
+	vector<vector<edge>> g;
+	vector<int> lev, beg;
+	ll F;
+	dinic(int n) : g(n), F(0) {}
+
+	void add(int a, int b, int c) {
+		g[a].emplace_back(b, c, g[b].size(), false);
+		g[b].emplace_back(a, 0, g[a].size()-1, true);
+	}
+	bool bfs(int s, int t) {
+		lev = vector<int>(g.size(), -1); lev[s] = 0;
+		beg = vector<int>(g.size(), 0);
+		queue<int> q; q.push(s);
+		while (q.size()) {
+			int u = q.front(); q.pop();
+			for (auto& i : g[u]) {
+				if (lev[i.to] != -1 or (i.flow == i.cap)) continue;
+				if (scaling and i.cap - i.flow < lim) continue;
+				lev[i.to] = lev[u] + 1;
+				q.push(i.to);
+			}
+		}
+		return lev[t] != -1;
+	}
+	int dfs(int v, int s, int f = INF) {
+		if (!f or v == s) return f;
+		for (int& i = beg[v]; i < g[v].size(); i++) {
+			auto& e = g[v][i];
+			if (lev[e.to] != lev[v] + 1) continue;
+			int foi = dfs(e.to, s, min(f, e.cap - e.flow));
+			if (!foi) continue;
+			e.flow += foi, g[e.to][e.rev].flow -= foi;
+			return foi;
+		}
+		return 0;
+	}
+	ll max_flow(int s, int t) {
+		for (lim = scaling ? (1<<30) : 1; lim; lim /= 2)
+			while (bfs(s, t)) while (int ff = dfs(s, t)) F += ff;
+		return F;
+	}
+
+	// arestas com fluxo
+	vector<pii> flow_edges(int s, int t) {
+		max_flow(s, t);
+		vector<pii> ans;
+		int n = g.size();
+		for (int i = 0; i < n; i++) {
+			for (auto edge : g[i]) {
+				if (!edge.res && edge.flow) 
+					ans.emplace_back(i, edge.to);
+			}
+		}
+		return ans;
+	}
+
+	// arestas no min cut
+	vector<pii> cut_edges(int s, int t) {
+		max_flow(s, t);
+		vector<pii> cut;
+		vector<int> vis(g.size(), 0), st = {s};
+		vis[s] = 1;
+		while (st.size()) {
+			int u = st.back(); st.pop_back();
+			for (auto e : g[u]) if (!vis[e.to] and e.flow < e.cap)
+				vis[e.to] = 1, st.push_back(e.to);
+		}
+		for (int i = 0; i < g.size(); i++) for (auto e : g[i])
+			if (vis[i] and !vis[e.to] and !e.res) cut.emplace_back(i, e.to);
+		return cut;
+	}
+};
+\end{lstlisting}
+
+\subsection{Dominator Tree - Kawakami}
+\begin{lstlisting}
+// build - O(n)
+// dominates - O(1)
+// c80920
+
+// importante que os vertices sejam de 0 a n - 1
+int n;
+
+namespace d_tree {
+	vector<int> g[MAXN];
+
+	// The dominator tree
+	// em alguns problemas vc usa o tamanho da arvore da source
+	// ent vale lembrar que nem todos os vertices fazem parte da arvore da source
+	// ent a dominator tree na real eh uma floresta
+	vector<int> tree[MAXN];
+	int dfs_l[MAXN], dfs_r[MAXN];
+
+	// Auxiliary data
+	vector<int> rg[MAXN], bucket[MAXN];
+	int idom[MAXN], sdom[MAXN], prv[MAXN], pre[MAXN];
+	int ancestor[MAXN], label[MAXN];
+	vector<int> preorder;
+
+	void dfs(int v) {
+		static int t = 0;
+		pre[v] = ++t;
+		sdom[v] = label[v] = v;
+		preorder.push_back(v);
+		for (int nxt: g[v]) {
+			if (sdom[nxt] == -1) {
+				prv[nxt] = v;
+				dfs(nxt);
+			}
+			rg[nxt].push_back(v);
+		}
+	}
+	int eval(int v) {
+		if (ancestor[v] == -1) return v;
+		if (ancestor[ancestor[v]] == -1) return label[v];
+		int u = eval(ancestor[v]);
+		if (pre[sdom[u]] < pre[sdom[label[v]]]) label[v] = u;
+		ancestor[v] = ancestor[u];
+		return label[v];
+	}
+	void dfs2(int v) {
+		static int t = 0;
+		dfs_l[v] = t++;
+		for (int nxt: tree[v]) dfs2(nxt);
+		dfs_r[v] = t++;
+	}
+	void build(int s) {
+		for (int i = 0; i < n; i++) {
+			sdom[i] = pre[i] = ancestor[i] = -1;
+			rg[i].clear();
+			tree[i].clear();
+			bucket[i].clear();
+		}
+		preorder.clear();
+		dfs(s);
+		if (preorder.size() == 1) return;
+		for (int i = int(preorder.size()) - 1; i >= 1; i--) {
+			int w = preorder[i];
+			for (int v: rg[w]) {
+				int u = eval(v);
+				if (pre[sdom[u]] < pre[sdom[w]]) sdom[w] = sdom[u];
+			}
+			bucket[sdom[w]].push_back(w);
+			ancestor[w] = prv[w];
+			for (int v: bucket[prv[w]]) {
+				int u = eval(v);
+				idom[v] = (u == v) ? sdom[v] : u;
+			}
+			bucket[prv[w]].clear();
+		}
+		for (int i = 1; i < preorder.size(); i++) {
+			int w = preorder[i];
+			if (idom[w] != sdom[w]) idom[w] = idom[idom[w]];
+			tree[idom[w]].push_back(w);
+		}
+		idom[s] = sdom[s] = -1;
+		dfs2(s);
+	}
+
+	// Whether every path from s to v passes through u
+	bool dominates(int u, int v) {
+		if (pre[v] == -1) return 1; // vacuously true
+		return dfs_l[u] <= dfs_l[v] && dfs_r[v] <= dfs_r[u];
+	}
+};
+\end{lstlisting}
+
+\subsection{MinCostMaxFlow}
+\begin{lstlisting}
+// declara mcmf<int ou ll> nome(qtd de nodes)
+// min_cost_flow(s, t, f) computa o par (fluxo, custo)
+// com max(fluxo) <= f que tenha min(custo)
+// min_cost_flow(s, t) -> Fluxo maximo de custo minimo de s pra t
+// Se for um dag, da pra substituir o SPFA por uma DP pra nao
+// para O(nm) no comeco
+// Se nao tiver aresta com custo negativo, nao precisa do SPFA
+//
+// O(nm + f * m log n)
+// 697b4c
+
+template<typename T> struct mcmf {
+	struct edge {
+		int to, rev, flow, cap; // para, id da reversa, fluxo, capacidade
+		bool res; // se eh reversa
+		T cost; // custo da unidade de fluxo
+		edge() : to(0), rev(0), flow(0), cap(0), cost(0), res(false) {}
+		edge(int to_, int rev_, int flow_, int cap_, T cost_, bool res_)
+			: to(to_), rev(rev_), flow(flow_), cap(cap_), res(res_), cost(cost_) {}
+	};
+
+	vector<vector<edge>> g;
+	vector<int> par_idx, par;
+	T inf;
+	vector<T> dist;
+
+	mcmf(int n) : g(n), par_idx(n), par(n), inf(numeric_limits<T>::max()/3) {}
+
+	void add(int u, int v, int w, T cost) { // de u pra v com cap w e custo cost
+		edge a = edge(v, g[v].size(), 0, w, cost, false);
+		edge b = edge(u, g[u].size(), 0, 0, -cost, true);
+
+		g[u].push_back(a);
+		g[v].push_back(b);
+	}
+
+	vector<T> spfa(int s) { // nao precisa se nao tiver custo negativo
+		deque<int> q;
+		vector<bool> is_inside(g.size(), 0);
+		dist = vector<T>(g.size(), inf);
+
+		dist[s] = 0;
+		q.push_back(s);
+		is_inside[s] = true;
+
+		while (!q.empty()) {
+			int v = q.front();
+			q.pop_front();
+			is_inside[v] = false;
+
+			for (int i = 0; i < g[v].size(); i++) {
+				auto [to, rev, flow, cap, res, cost] = g[v][i];
+				if (flow < cap and dist[v] + cost < dist[to]) {
+					dist[to] = dist[v] + cost;
+
+					if (is_inside[to]) continue;
+					if (!q.empty() and dist[to] > dist[q.front()]) q.push_back(to);
+					else q.push_front(to);
+					is_inside[to] = true;
+				}
+			}
+		}
+		return dist;
+	}
+	bool dijkstra(int s, int t, vector<T>& pot) {
+		priority_queue<pair<T, int>, vector<pair<T, int>>, greater<>> q;
+		dist = vector<T>(g.size(), inf);
+		dist[s] = 0;
+		q.emplace(0, s);
+		while (q.size()) {
+			auto [d, v] = q.top();
+			q.pop();
+			if (dist[v] < d) continue;
+			for (int i = 0; i < g[v].size(); i++) {
+				auto [to, rev, flow, cap, res, cost] = g[v][i];
+				cost += pot[v] - pot[to];
+				if (flow < cap and dist[v] + cost < dist[to]) {
+					dist[to] = dist[v] + cost;
+					q.emplace(dist[to], to);
+					par_idx[to] = i, par[to] = v;
+				}
+			}
+		}
+		return dist[t] < inf;
+	}
+
+	pair<int, T> min_cost_flow(int s, int t, int flow = INF) {
+		vector<T> pot(g.size(), 0);
+		pot = spfa(s); // mudar algoritmo de caminho minimo aqui
+
+		int f = 0;
+		T ret = 0;
+		while (f < flow and dijkstra(s, t, pot)) {
+			for (int i = 0; i < g.size(); i++)
+				if (dist[i] < inf) pot[i] += dist[i];
+
+			int mn_flow = flow - f, u = t;
+			while (u != s){
+				mn_flow = min(mn_flow,
+					g[par[u]][par_idx[u]].cap - g[par[u]][par_idx[u]].flow);
+				u = par[u];
+			}
+
+			ret += pot[t] * mn_flow;
+
+			u = t;
+			while (u != s) {
+				g[par[u]][par_idx[u]].flow += mn_flow;
+				g[u][g[par[u]][par_idx[u]].rev].flow -= mn_flow;
+				u = par[u];
+			}
+
+			f += mn_flow;
+		}
+
+		return make_pair(f, ret);
+	}
+
+	// Opcional: retorna as arestas originais por onde passa flow = cap
+	vector<pair<int,int>> recover() {
+		vector<pair<int,int>> used;
+		for (int i = 0; i < g.size(); i++) for (edge e : g[i])
+			if(e.flow == e.cap && !e.res) used.push_back({i, e.to});
+		return used;
+	}
+};
+\end{lstlisting}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+ 
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 2e5 + 5;
+const ll INF = 2e18;
+
+vector<int> v[MAXN], ans;
+bool valid = true;
+int cor[MAXN];
+ 
+void dfs(int node) {
+	cor[node] = 1;
+	for (int x : v[node]) {
+		if (cor[x] == 1) {
+			valid = false;
+			return;
+		}
+		if (!cor[x]) dfs(x);
+	}
+	cor[node] = 2;
+	ans.push_back(node);
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m;
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+		int a, b;
+		cin >> a >> b;
+		v[a].push_back(b);
+	}
+	for (int i = 1; i <= n && valid; i++) {
+		if (!cor[i]) {
+			dfs(i);
+		}
+	}
+	if (!valid) cout << "IMPOSSIBLE\n";
+	else {
+		reverse(ans.begin(), ans.end());
+		for (int x : ans) cout << x << ' ';
+		cout << '\n';
+	}
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+ 
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 2e5 + 5;
+const ll INF = 1e18;
+
+vector<array<int, 3>> v;
+ll dist[MAXN];
+int p[MAXN];
+ 
+int main() { 
+	ios::sync_with_stdio(false);
+    cin.tie(0);
+	int n, m;
+	cin >> n >> m;
+	array<int, 3> a;
+
+	// recebe aresta de a pra b com custo c
+	for (int i = 0; i < m; i++) {
+		cin >> a[0] >> a[1] >> a[2];
+		v.push_back(a);
+	}
+	int x = -1;
+	for (int i = 2; i <= n; i++) dist[i] = INF;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (dist[v[j][0]] + v[j][2] < dist[v[j][1]]) {
+				dist[v[j][1]] = dist[v[j][0]] + v[j][2];
+				p[v[j][1]] = v[j][0];
+				if (i == n-1) x = v[j][1];
+			}
+		}
+	}
+	if (x == -1) cout << "NO\n";
+	else {
+		cout << "YES\n";
+		for (int i = 0; i < n; i++) x = p[x];
+		stack<int> ans;
+		ans.push(x);
+		for (int i = p[x]; i != x; i = p[i]) {
+			ans.push(i);
+		}
+		ans.push(x);
+		while (!ans.empty()) {
+			cout << ans.top() << ' ';
+			ans.pop();
+		}
+		cout << '\n';
+	}
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+ 
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 2e5 + 5;
+const int INF = 1e9;
+
+// Max flow com lower bound nas arestas
+// 
+// add(a, b, l, r):
+// 	adiciona aresta de a pra b, onde precisa passar f de fluxo, l <= f <= r
+// add(a, b, c):
+// 	adiciona aresta de a pra b com capacidade c
+//
+// Mesma complexidade do Dinic
+
+// INF tem que ser int, de preferencia 1e9
+
+struct dinic {
+	const bool scaling = false;
+	int lim;
+	struct edge {
+		int to, cap, rev, flow;
+		bool res;
+		edge(int to_, int cap_, int rev_, bool res_)
+			: to(to_), cap(cap_), rev(rev_), flow(0), res(res_) {}
+	};
+
+	vector<vector<edge>> g;
+	vector<int> lev, beg;
+	ll F;
+	dinic(int n) : g(n), F(0) {}
+
+	void add(int a, int b, int c) {
+		g[a].emplace_back(b, c, g[b].size(), false);
+		g[b].emplace_back(a, 0, g[a].size()-1, true);
+	}
+	bool bfs(int s, int t) {
+		lev = vector<int>(g.size(), -1); lev[s] = 0;
+		beg = vector<int>(g.size(), 0);
+		queue<int> q; q.push(s);
+		while (q.size()) {
+			int u = q.front(); q.pop();
+			for (auto& i : g[u]) {
+				if (lev[i.to] != -1 or (i.flow == i.cap)) continue;
+				if (scaling and i.cap - i.flow < lim) continue;
+				lev[i.to] = lev[u] + 1;
+				q.push(i.to);
+			}
+		}
+		return lev[t] != -1;
+	}
+	int dfs(int v, int s, int f = INF) {
+		if (!f or v == s) return f;
+		for (int& i = beg[v]; i < g[v].size(); i++) {
+			auto& e = g[v][i];
+			if (lev[e.to] != lev[v] + 1) continue;
+			int foi = dfs(e.to, s, min(f, e.cap - e.flow));
+			if (!foi) continue;
+			e.flow += foi, g[e.to][e.rev].flow -= foi;
+			return foi;
+		}
+		return 0;
+	}
+	ll max_flow(int s, int t) {
+		for (lim = scaling ? (1<<30) : 1; lim; lim /= 2)
+			while (bfs(s, t)) while (int ff = dfs(s, t)) F += ff;
+		return F;
+	}
+};
+
+struct lb_max_flow : dinic {
+	vector<int> d;
+	lb_max_flow(int n) : dinic(n + 2), d(n, 0) {}
+	void add(int a, int b, int l, int r) {
+		d[a] -= l;
+		d[b] += l;
+		dinic::add(a, b, r - l);
+	}
+	void add(int a, int b, int c) {
+		dinic::add(a, b, c);
+	}
+	bool has_circulation() {
+		int n = d.size();
+
+		ll cost = 0;
+		for (int i = 0; i < n; i++) {
+			if (d[i] > 0) {
+				cost += d[i];
+				dinic::add(n, i, d[i]);
+			} else if (d[i] < 0) {
+				dinic::add(i, n+1, -d[i]);
+			}
+		}
+
+		return (dinic::max_flow(n, n+1) == cost);
+	}
+	bool has_flow(int src, int snk) {
+		dinic::add(snk, src, INF);
+		return has_circulation();
+	}
+	ll max_flow(int src, int snk) {
+		if (!has_flow(src, snk)) return -1;
+		dinic::F = 0;
+		return dinic::max_flow(src, snk);
+	}
+};
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+	// recebo o numero de vertices e m arestas do tipo
+	// vai de a pra b e fluxo tem que estar entre [c, d]
+	// note que nao preciso adicionar uma source nem uma sink
+	// o algoritmo ja faz isso por mim
+    int n, m;
+	cin >> n >> m;
+	lb_max_flow ber(n);
+	map<pii, int> id;
+	vector<int> ans(m);
+	for (int i = 0; i < m; i++) {
+		int a, b, c, d;
+		cin >> a >> b >> c >> d;
+		a--, b--;
+		id[{a, b}] = i;
+		ans[i] = c;
+		ber.add(a, b, c, d);
+	}
+
+	// Se tem um fluxo que atende todas as exigencias
+	if (ber.has_circulation()) {
+		cout << "YES" << endl;
+		
+		// Importante: n eh a qtd de vertices
+		for (int i = 0; i < n; i++) {
+			for (auto edge : ber.g[i]) {
+				if (edge.res) {
+					int j = edge.to;
+					if (j >= n) continue;
+					ans[id[{j, i}]] -= edge.flow;
+				}
+			}
+		}
+
+		// imprime fluxo em cada aresta
+		for (int x : ans) cout << x << '\n';
+	}
+	else {
+		cout << "NO\n";
+	}
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{t dep[MAXN], tab[MAXL][MAXN];}
+\begin{lstlisting}
+
+void dfs(int node, int pai = 0) {
+    dep[node] = dep[pai] + 1;
+    tab[0][node] = pai;
+    for (int x : v[node]) {
+        if (x != pai) dfs(x, node);
+    }
+}
+
+void calcTab(int n) {
+    for (int i = 1; i < MAXL; i++) {
+        for (int j = 1; j <= n; j++) tab[i][j] = tab[i - 1][tab[i - 1][j]]; 
+    }
+}
+
+int lca(int a, int b) {
+    if (dep[a] < dep[b]) swap(a, b);
+    for (int i = MAXL - 1; i >= 0; i--) {
+        if (dep[a] - (1 << i) >= dep[b]) {
+            a = tab[i][a];
+        }
+    }
+    if (a == b) return a;
+    for (int i = MAXL - 1; i >= 0; i--) {
+        if (tab[i][a] != tab[i][b]) {
+            a = tab[i][a];
+            b = tab[i][b];
+        }
+    }
+    return tab[0][a];
+}
+\end{lstlisting}
+
+\subsection{t n;}
+\begin{lstlisting}
+ 
+void FW() {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            for (int k = 1; k <= n; k++) {
+                dist[j][k] = min(dist[j][k], dist[j][i] + dist[i][k]);
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+%
+% Math
+%
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Math}
+
+\subsection{*}
+\begin{lstlisting}
+ * Description: ntt(a) computes $\hat f(k) = \sum_x a[x] g^{xk}$ for all $k$, where $g=\text{root}^{(MOD-1)/N}$.
+ * N must be a power of 2.
+ * Useful for convolution modulo specific nice primes of the form $2^a b+1$,
+ * where the convolution result has size at most $2^a$. For arbitrary modulo, see FFTMod.
+   \texttt{conv(a, b) = c}, where $c[x] = \sum a[i]b[x-i]$.
+   For manual convolution: NTT the inputs, multiply
+   pointwise, divide by n, reverse(start+1, end), NTT back.
+ * Inputs must be in [0, MOD).
+ * Time: O(N \log N)
+ * Status: stress-tested
+ */
+const ll MOD = (119 << 23) + 1, root = 62; // = 998244353
+// For p < 2^30 there is also e.g. 5 << 25, 7 << 26, 479 << 21
+// and 483 << 21 (same root). The last two are > 10^9.
+#pragma once
+
+void ntt(vector<ll> &a) {
+	int n = a.size(), L = 31 - __builtin_clz(n);
+	static vector<ll> rt(2, 1);
+	for (static int k = 2, s = 2; k < n; k *= 2, s++) {
+		rt.resize(n);
+		ll z[] = {1, fexp(root, MOD >> s)};
+		for (int i = k; i < 2 * k; i++) rt[i] = rt[i / 2] * z[i & 1] % MOD;
+	}
+	vector<int> rev(n);
+	for(int i = 0; i < n; i++) rev[i] = (rev[i / 2] | (i & 1) << L) / 2;
+	for(int i = 0; i < n; i++) if (i < rev[i]) swap(a[i], a[rev[i]]);
+	for (int k = 1; k < n; k *= 2) {
+		for (int i = 0; i < n; i += 2 * k) {
+            for (int j = 0; j < k; j++) {
+                ll z = rt[j + k] * a[i + j + k] % MOD, &ai = a[i + j];
+                a[i + j + k] = ai - z + (z > ai ? MOD : 0);
+                ai += (ai + z >= MOD ? z - MOD : z);
+            }
+		}
+    }
+}
+vector<ll> conv(const vector<ll> &a, const vector<ll> &b) {
+	if (a.empty() || b.empty()) return {};
+	int s = a.size() + b.size() - 1, B = 32 - __builtin_clz(s), n = 1 << B;
+	int inv = fexp(n, MOD - 2);
+	vector<ll> L(a), R(b), out(n);
+	L.resize(n), R.resize(n);
+	ntt(L), ntt(R);
+	for(int i = 0; i < n; i++) out[-i & (n - 1)] = (ll)L[i] * R[i] % MOD * inv % MOD;
+	ntt(out);
+	return {out.begin(), out.begin() + s};
+}
+\end{lstlisting}
+
+\subsection{template para problemas de combinatoria}
+\begin{lstlisting}
+
+ll fexp(ll b, ll e) {
+    ll ans = 1;
+    while (e) {
+        if (e&1) ans = (ans * b) % MOD;
+        b = (b * b) % MOD;
+        e >>= 1;
+    }
+    return ans;
+}
+
+void precalc() {
+    fat[0] = 1;
+    for (int i = 1; i < MAXN; i++) fat[i] = (1ll * i * fat[i - 1]) % MOD;
+    inv[MAXN - 1] = fexp(fat[MAXN - 1], MOD - 2);
+    for (int i = MAXN - 2; i >= 0; i--) inv[i] = ((i + 1ll) * inv[i + 1]) % MOD;
+}
+
+int nck(int n, int k) {
+    if (k > n || k < 0 || n < 0) return 0;
+    return (((1ll * fat[n] * inv[k]) % MOD) * 1ll * inv[n - k]) % MOD; 
+}
+
+void add(int &a, int b) {
+    a += b;
+    if (a >= MOD) a -= MOD;
+    if (a < 0) a += MOD;
+}
+
+int mul(int a, int b) {
+    return (1ll * a * b) % MOD;
+}
+\end{lstlisting}
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+%
+% Problems
+%
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Problems}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+    
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 1e5 + 5;
+const int INF = 2e9;
+ 
+// Two types of queries:
+// A new edge is created between nodes a and b
+// An existing edge between nodes a and b is removed.
+
+int ans[MAXN], pai[MAXN], sz[MAXN], resp;
+map<pii, int> mp;
+stack<int> st;
+
+// Seg
+
+struct no {
+    vector<pii> v;
+    no() {
+        v = vector<pii> ();
+    }
+} a[4 * MAXN];
+ 
+void update(int node, int i, int j, int ini, int fim, pii val) {
+    if (j < ini || i > fim) return;
+    else if (ini <= i && j <= fim) {
+        a[node].v.push_back(val);
+    }
+    else {
+        int m = (i + j) / 2;
+        update(2 * node, i, m, ini, fim, val);
+        update(2 * node + 1, m + 1, j, ini, fim, val);
+    }
+}
+ 
+// DSU
+ 
+int find(int x) {
+    if (x == pai[x]) return x;
+    return find(pai[x]);
+}
+ 
+void join(int a, int b) {
+    a = find(a), b = find(b);
+    if (sz[a] < sz[b]) {
+        swap(a, b);
+    }
+    pai[b] = a;
+    sz[a] += sz[b];
+    st.push(b);
+    resp--;
+}
+ 
+void rollback() {
+    int at = st.top();
+    st.pop();
+    sz[pai[at]] -= sz[at];
+    pai[at] = at;
+    resp++;
+}
+ 
+//
+ 
+void dfs(int node, int i, int j) {
+    int cnt = 0;
+    for (auto x : a[node].v) {
+        if (find(x.first) != find(x.second)) {
+            join(x.first, x.second);
+            cnt++;
+        }
+    }
+    if (i == j) {
+        ans[i] = resp;
+    }
+    else {
+        int m = (i + j) / 2;
+        dfs(2 * node, i, m);
+        dfs(2 * node + 1, m + 1, j);
+    }
+    for (int i = 0; i < cnt; i++) {
+        rollback();
+    }
+}
+ 
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m, k, tipo, a, b;
+    cin >> n >> m >> k;
+    resp = n;
+    for (int i = 1; i <= n; i++) pai[i] = i, sz[i] = 1;
+    for (int i = 0; i < m; i++) {
+        cin >> a >> b;
+        if (a > b) swap(a, b);
+        mp[{a, b}] = 0;
+    }
+    for (int i = 1; i <= k; i++) {
+        // tempo i
+ 
+        cin >> tipo >> a >> b;
+        if (a > b) swap(a, b);
+        if (tipo == 1) {
+            mp[{a, b}] = i;
+        }
+        else {
+            update(1, 0, k + 1, mp[{a, b}], i - 1, {a, b});
+            mp[{a, b}] = -1;
+        }
+    }
+    for (auto x : mp) {
+        // se x.second nao for -1, preciso fechar o intervalo da aresta
+        
+        if (x.second == -1) continue;
+        update(1, 0, k + 1, x.second, k + 1, x.first);
+    }
+    dfs(1, 0, k + 1);
+    for (int i = 0; i <= k; i++) cout << ans[i] << ' ';
+    cout << '\n';
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+    
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 5e4 + 5;
+const int INF = 2e9;
+ 
+const int X = 225;
+
+struct que {
+	int ans, l, r, b, id;
+};
+ 
+int resp, ra, cnt;
+vector<que> qs;
+pii ed[MAXN];
+int pai[MAXN], sz[MAXN];
+stack<int> st;
+
+int find(int x) {
+    if (x == pai[x]) return x;
+    return find(pai[x]);
+}
+ 
+void join(int a, int b) {
+    a = find(a), b = find(b);
+    if (sz[a] < sz[b]) {
+        swap(a, b);
+    }
+    pai[b] = a;
+    sz[a] += sz[b];
+    st.push(b);
+    resp--;
+}
+
+void rollback() {
+    int at = st.top();
+    st.pop();
+    sz[pai[at]] -= sz[at];
+    pai[at] = at;
+    resp++;
+}
+
+int main() { 
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+	int n, m;
+	cin >> n >> m;
+	for (int i = 1; i <= m; i++) {
+		cin >> ed[i].first >> ed[i].second;
+	}
+    int q;
+    cin >> q;
+    que aux;
+	for (int i = 0; i < q; i++) {
+		cin >> aux.l >> aux.r;
+		aux.id = i;
+		aux.b = aux.l/X;
+		qs.push_back(aux);
+	}
+	sort(qs.begin(), qs.end(), [&] (que x, que y) {
+		if (x.b != y.b) return x.b < y.b;
+		return x.r < y.r;
+	});
+	for (int i = 0; i < q; i++) {
+		if (i == 0 || qs[i].b != qs[i - 1].b) {
+			// new batch
+            while (!st.empty()) st.pop();
+            for (int j = 1; j <= n; j++) {
+                sz[j] = 1;
+                pai[j] = j;
+            }
+			resp = n, ra = (qs[i].b + 1) * X - 1;
+		}
+        if (qs[i].r < (qs[i].b + 1) * X) {
+            // naive
+            for (int j = qs[i].l; j <= qs[i].r; j++) {
+                if (find(ed[j].first) != find(ed[j].second)) {
+                    cnt++;
+                    join(ed[j].first, ed[j].second);
+                }
+            }
+            qs[i].ans = resp;
+            while (cnt) {
+                rollback();
+                cnt--;
+            }
+        }
+        else {
+            for (int j = ra + 1; j <= qs[i].r; j++) {
+                if (find(ed[j].first) != find(ed[j].second)) {
+                    join(ed[j].first, ed[j].second);
+                }
+            }
+            for (int j = qs[i].l; j < (qs[i].b + 1) * X; j++) {
+                if (find(ed[j].first) != find(ed[j].second)) {
+                    cnt++;
+                    join(ed[j].first, ed[j].second);
+                }
+            }
+            ra = qs[i].r;
+            qs[i].ans = resp;
+            while (cnt) {
+                rollback();
+                cnt--;
+            }
+        }
+	}
+
+	sort(qs.begin(), qs.end(), [&] (que x, que y) { return x.id < y.id; });
+	for (que x : qs) cout << x.ans << '\n';
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+    
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 1e5 + 5;
+const int INF = 2e9;
+ 
+const int X = 400;
+
+struct que {
+	int ans, l, r, b, id;
+};
+ 
+int resp, ra, cnt;
+vector<que> qs;
+pii ed[MAXN];
+int pai[MAXN], sz[MAXN], len[MAXN];
+stack<pii> st;
+
+pii find(int x) {
+    if (x == pai[x]) return {x, len[x]};
+    pii ans = find(pai[x]);
+    return {ans.first, ans.second ^ len[x]};
+}
+ 
+void join(int a, int b) {
+    pii c = find(a), d = find(b);
+    if (sz[c.first] < sz[d.first]) {
+        swap(c, d);
+    }
+    pai[d.first] = c.first;
+    sz[c.first] += sz[d.first];
+    st.push({d.first, len[d.first]});
+    len[d.first] = 1 ^ c.second ^ d.second;
+}
+
+void rollback() {
+    pii at = st.top();
+    st.pop();
+    if (at.first) {
+        sz[pai[at.first]] -= sz[at.first];
+        len[at.first] = at.second;
+        pai[at.first] = at.first;
+    }
+    else resp = 1;
+}
+
+int main() { 
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+	int n, m, q;
+	cin >> n >> m >> q;
+	for (int i = 1; i <= m; i++) {
+		cin >> ed[i].first >> ed[i].second;
+	}
+    que aux;
+	for (int i = 0; i < q; i++) {
+		cin >> aux.l >> aux.r;
+		aux.id = i;
+		aux.b = aux.l/X;
+		qs.push_back(aux);
+	}
+	sort(qs.begin(), qs.end(), [&] (que x, que y) {
+		if (x.b != y.b) return x.b < y.b;
+		return x.r < y.r;
+	});
+	for (int i = 0; i < q; i++) {
+		if (i == 0 || qs[i].b != qs[i - 1].b) {
+			// new batch
+            while (!st.empty()) st.pop();
+            for (int j = 1; j <= n; j++) {
+                sz[j] = 1;
+                pai[j] = j;
+                len[j] = 0;
+            }
+			resp = 1, ra = (qs[i].b + 1) * X - 1;
+		}
+        if (qs[i].r < (qs[i].b + 1) * X) {
+            // naive
+            for (int j = qs[i].l; j <= qs[i].r; j++) {
+                pii c = find(ed[j].first), d = find(ed[j].second);
+                if (c.first != d.first) {
+                    cnt++;
+                    join(ed[j].first, ed[j].second);
+                }
+                else {
+                    if (resp == 1 && c.second ^ d.second == 0) {
+                        cnt++;
+                        resp = 0;
+                        st.push({0, 0});
+                    }
+                }
+            }
+            qs[i].ans = resp;
+            while (cnt) {
+                rollback();
+                cnt--;
+            }
+        }
+        else {
+            for (int j = ra + 1; j <= qs[i].r; j++) {
+                pii c = find(ed[j].first), d = find(ed[j].second);
+                if (c.first != d.first) {
+                    join(ed[j].first, ed[j].second);
+                }
+                else {
+                    if (resp == 1 && c.second ^ d.second == 0) {
+                        resp = 0;
+                        st.push({0, 0});
+                    }
+                }
+            }
+            for (int j = qs[i].l; j < (qs[i].b + 1) * X; j++) {
+                pii c = find(ed[j].first), d = find(ed[j].second);
+                if (c.first != d.first) {
+                    cnt++;
+                    join(ed[j].first, ed[j].second);
+                }
+                else {
+                    if (resp == 1 && c.second ^ d.second == 0) {
+                        cnt++;
+                        resp = 0;
+                        st.push({0, 0});
+                    }
+                }
+            }
+            ra = qs[i].r;
+            qs[i].ans = resp;
+            while (cnt) {
+                rollback();
+                cnt--;
+            }
+        }
+	}
+
+	sort(qs.begin(), qs.end(), [&] (que x, que y) { return x.id < y.id; });
+	for (que x : qs) cout << (x.ans ? "Possible\n" : "Impossible\n");
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{nclude <bits/stdc++.h>}
+\begin{lstlisting}
+const int MAXN = 1e5 + 10;
+const int SQ = 326;
+int v[MAXN], mx[SQ], bl[MAXN], e[SQ], d[SQ];
+int main() {
+	for(int i = 0; i < SQ; i++) e[i] = MAXN;
+	for(int i = 0; i < MAXN; i++) {
+		bl[i] = i / SQ;
+		e[bl[i]] = min(i, e[bl[i]]);
+		d[bl[i]] = max(d[bl[i]], i);
+	}
+	int t;
+	scanf("%d", &t);
+	for(int ab = 0; ab < t; ab++) {
+		printf("Scenario #%d:\n", ab + 1);
+		int n, q;
+		for(int i = 0; i < SQ; i++) {
+			mx[i] = 1123456789;
+		}
+		scanf("%d %d", &n, &q);
+		for(int i = 0; i < n; i++) {
+			scanf("%d", &v[i]);
+			mx[bl[i]] = min(mx[bl[i]], v[i]);
+		}
+		for(int i = 0; i < q; i++) {
+			int a, b;
+			scanf("%d %d", &a, &b); a--; b--;
+			int resp = 1123456789;
+			if(bl[a] == bl[b]) {
+				for(int j = a; j <= b; j++) {
+					resp = min(v[j], resp);
+				}
+			}
+			else {
+				for(int j = a; j <= d[bl[a]]; j++) {
+					resp = min(resp, v[j]);
+				}
+				for(int j = b; j >= e[bl[b]]; j--) {
+					resp = min(resp, v[j]);
+				}
+				for(int j = bl[a] + 1; j <= bl[b] - 1; j++) {
+					resp = min(mx[j], resp);
+				}
+			}
+			printf("%d\n", resp);
+		}
+	}
+	return 0;
+} 
+\end{lstlisting}
+
+\subsection{nst int X = 700;}
+\begin{lstlisting}
+struct que {
+	int ans, l, r, b, id;
+};
+ 
+vector<que> qs;
+ 
+int main() {
+	int n, q;
+	cin >> n >> q;
+    // probably receive some input here
+	que aux;
+	for (int i = 0; i < q; i++) {
+		cin >> aux.l >> aux.r;
+		aux.id = i;
+		aux.l--, aux.r--;
+		aux.b = aux.l/X;
+		qs.pb(aux);
+	}
+	sort(qs.begin(), qs.end(), [&] (que x, que y) {
+		if (x.b != y.b) return x.b < y.b;
+		return x.r < y.r;
+	});
+	int la, ra, resp;
+	for (int i = 0; i < q; i++) {
+		if (i == 0 || qs[i].b != qs[i-1].b) {
+			// new batch
+            // initialize resp
+			resp = 0;
+			for (int j = qs[i].l; j <= qs[i].r; j++) {
+                // go forward
+			}
+		}
+		else {
+			for (int j = ra+1; j <= qs[i].r; j++) {
+                // go forward
+			}
+			for (int j = la-1; j >= qs[i].l; j--) {
+                // go backwards
+			}
+			for (int j = la; j < qs[i].l; j++) {
+                // go forward
+			}
+		}
+		qs[i].ans = resp;
+		la = qs[i].l, ra = qs[i].r;
+	}
+	sort(qs.begin(), qs.end(), [&] (que x, que y) { return x.id < y.id; });
+	for (que x : qs) cout << x.ans << '\n';
+    return 0;
+}
+\end{lstlisting}
+
