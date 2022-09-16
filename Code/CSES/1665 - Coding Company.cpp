@@ -1,8 +1,9 @@
-/*
-Problem Name: Coding Company
-Problem Link: https://cses.fi/problemset/task/1165
-Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
-*/
+// Coding Company
+//
+// Problem name: Coding Company
+// Problem Link: https://cses.fi/problemset/task/1665
+// Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -1,8 +1,9 @@
-/*
-Problem Name: Range Minimum Queries II
-Problem Link: https://cses.fi/problemset/task/1649
-Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
-*/
+// Dynamic Range Minimum Queries
+//
+// Problem name: Dynamic Range Minimum Queries
+// Problem Link: https://cses.fi/problemset/task/1649
+// Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

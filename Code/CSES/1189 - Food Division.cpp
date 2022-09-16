@@ -1,8 +1,9 @@
-/*
-Problem Name: Food Divison
-Problem Link: https://cses.fi/problemset/task/1189
-Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
-*/
+// Food Division
+//
+// Problem name: Food Division
+// Problem Link: https://cses.fi/problemset/task/1189
+// Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
+
 #include <bits/stdc++.h>
  
 using namespace std;
