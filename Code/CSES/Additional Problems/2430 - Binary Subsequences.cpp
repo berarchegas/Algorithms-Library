@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2430
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to find a minimum length bit string that has exactly n distinct subsequences.
+// For example, a correct solution for n=6 is 101 whose distinct subsequences are 0, 1, 01, 10, 11 and 101.
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1654
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a list of n integers, your task is to calculate for each element x:
+//     the number of elements y such that x | y = x
+//     the number of elements y such that x & y = x
+//     the number of elements y such that x & y != 0
+
 #include <bits/stdc++.h>
  
 using namespace std;

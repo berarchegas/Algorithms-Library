@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/1112
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to calculate the number of strings of length n having a given pattern 
+// of length m as their substring. All strings consist of characters A–Z.
+// DP + Automato KMP
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/1741
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given n rectangles, your task is to determine the total area of their union.
+
 #include <bits/stdc++.h>
     
 using namespace std;

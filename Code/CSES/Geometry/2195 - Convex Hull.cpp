@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/2195
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a set of n points in the two-dimensional plane, your task is to determine the convex hull of the points.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 2000100

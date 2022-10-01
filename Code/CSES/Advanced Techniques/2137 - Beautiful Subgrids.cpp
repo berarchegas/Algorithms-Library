@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2137
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given an n x n grid whose each square is either black or white.
+// A subgrid is called beautiful if its height and width is at least two 
+// and all of its corners are black. How many beautiful subgrids are there within the given grid?
+
 #pragma GCC target("popcnt")
 #include <iostream>
 #include <bitset>

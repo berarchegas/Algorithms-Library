@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1080
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a string consisting of n characters between a and z.
+// On each turn, you may remove any two adjacent characters that are equal. 
+// Your goal is to construct an empty string by removing all the characters.
+// In how many ways can you do this?
+
 #include <bits/stdc++.h>
  
 using namespace std;

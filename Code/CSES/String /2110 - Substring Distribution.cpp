@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2110
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a string of length n. For every integer between 1...n 
+// you need to print the number of distinct substrings of that length.
+
 #include <bits/stdc++.h>
     
 using namespace std;

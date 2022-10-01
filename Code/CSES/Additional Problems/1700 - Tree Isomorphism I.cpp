@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1700
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given two rooted trees, your task is to find out if they are isomorphic, 
+// i.e., it is possible to draw them so that they look the same.
+
 #include <bits/stdc++.h>
     
 using namespace std;

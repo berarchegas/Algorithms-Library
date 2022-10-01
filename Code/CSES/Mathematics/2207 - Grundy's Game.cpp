@@ -4,43 +4,45 @@
 // Problem Link: https://cses.fi/problemset/task/2207
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is a heap of n coins and two players who move alternately. 
+// On each move, a player chooses a heap and divides into two nonempty heaps that have a different number of coins. 
+// The player who makes the last move wins the game.
+// Your task is to find out who wins if both players play optimally.
+
+// se n <= 1222, podemos rodar uma dp n ^ 2, se nao o primeiro jogador sempre vence
+
 #include <bits/stdc++.h>
-#define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define MAXN 1000100
-#define INF 100000000
-#define pb push_back
-#define F first
-#define S second
  
 using namespace std;
-typedef long long int ll;
-typedef pair<int, int> pii;
-const int M = 1e9+7;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
  
-int main () { _
-    int t;
-    cin >> t;
-    vector<int> v(2050);
-    for (int i = 3; i <= 2000; i++) {
-        vector<int> aux;
-        for (int j = i-1; j > i-j; j--) {
-           aux.pb(v[j] ^ v[i-j]);
-        }
-        sort(aux.begin(), aux.end());
-        int resp = 0;
-        for (auto x : aux) {
-            if (x > resp) break;
-            else if (x == resp) resp++;
-        }
-        v[i] = resp;
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 2e5 + 5;
+const ll INF = 2e18;
+ 
+vector<int> v = {1,2,4,7,10,20,23,26,50,53,270,273,276,282,285,288,316,334,337,340,346,359,362,365,386,389,392,566,630,633,636,639,673,676,682,685,923,926,929,932,1222,1240};
+int ans[1230];
+ 
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int cnt = 0;
+    for (int i = 1; i <= 1222; i++) {
+        if (v[cnt] == i) cnt++;
+        else ans[i] = 1;
     }
+    int t, n;
+    cin >> t;
     while (t--) {
-        int n;
         cin >> n;
-        if (n <= 2000) {
-            cout << (v[n] ? "first\n" : "second\n");
+        if (n > 1222) cout << "first\n";
+        else {
+            cout << (ans[n] ? "first\n" : "second\n");
         }
-        else cout << "first\n";
     }
     return 0;
 }

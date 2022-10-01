@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2423
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to fill an n×m grid using L-trominos 
+// (three squares that have an L-shape).
+
 #include <bits/stdc++.h>
  
 using namespace std;

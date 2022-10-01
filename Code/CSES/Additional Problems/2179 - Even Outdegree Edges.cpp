@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2179
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given an undirected graph, your task is to choose a direction for each edge so 
+// that in the resulting directed graph each node has an even outdegree. 
+// The outdegree of a node is the number of edges coming out of that node.
+
 #include <bits/stdc++.h>
  
 using namespace std;

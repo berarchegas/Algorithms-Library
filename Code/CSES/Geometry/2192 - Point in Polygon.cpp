@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2192
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a polygon of n vertices and a list of m points. 
+// Your task is to determine for each point if it is inside, outside or on the boundary of the polygon.
+// The polygon consists of n vertices (x1,y1),(x2,y2)...,(xn,yn). The vertices (xi,yi) and (xi+1,yi+1) 
+// are adjacent for i=1,2...,n−1, and the vertices (x1,y1) and (xn,yn) are also adjacent.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

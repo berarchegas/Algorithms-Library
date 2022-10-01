@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1727
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n children, and each of them independently gets a random integer number of candies between 1 and k.
+// What is the expected maximum number of candies a child gets?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

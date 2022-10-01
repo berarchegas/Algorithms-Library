@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/2215
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to create a permutation of numbers 1,2,…,n whose longest monotone subsequence has exactly k elements.
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1698
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given an array containing a permutation of numbers 1,2,...n, 
+// and your task is to sort the array using swap rounds. On each swap round, 
+// you can choose any number of distinct pairs of elements and swap each pair.
+// Your task is to find the minimum number of rounds and show how you can choose the pairs in each round.
+
 #include <bits/stdc++.h>
  
 using namespace std;

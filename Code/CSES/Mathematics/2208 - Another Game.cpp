@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2208
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n heaps of coins and two players who move alternately. 
+// On each move, a player selects some of the nonempty heaps and removes one coin from each heap. 
+// The player who removes the last coin wins the game.
+//Your task is to find out who wins if both players play optimally.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

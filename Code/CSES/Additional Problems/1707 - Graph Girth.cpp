@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/1707
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given an undirected graph, your task is to determine its girth, i.e., the length of its shortest cycle.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 2505

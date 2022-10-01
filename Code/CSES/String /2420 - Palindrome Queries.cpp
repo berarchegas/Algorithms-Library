@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2420
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a string that consists of n characters between a–z. The positions of the string are indexed 1,2, ... n.
+// Your task is to process m operations of the following types:
+//     Change the character at position k to x
+//     Check if the substring from position a to position b is a palindrome
+
 #include <bits/stdc++.h>
  
 using namespace std;

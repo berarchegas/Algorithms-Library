@@ -4,6 +4,13 @@
 // Problem Link: https://cses.fi/problemset/task/1706
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A group of n children are coming to Helsinki. 
+// There are two possible attractions: a child can visit either Korkeasaari (zoo) or Linnanmaki (amusement park).
+// There are m pairs of children who want to visit the same attraction. 
+// Your task is to find all possible alternatives for the number of children that will visit Korkeasaari. 
+// The children's wishes have to be taken into account.
+// Knapsack em Nsqrt(n)
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 100100

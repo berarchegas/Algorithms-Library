@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1096
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to calculate the number of ways to get a sum n by throwing dice. Each throw yields an integer between 1…6.
+// For example, if n=10, some possible ways are 3+3+4, 1+4+1+4 and 1+1+6+1+1.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1743
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string, you want to reorder its characters so that no two adjacent 
+// characters are the same. What is the lexicographically minimal such string?
+
 #include <bits/stdc++.h>
  
 using namespace std;

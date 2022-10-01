@@ -4,8 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/1712
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
-// Your task is to efficiently calculate values a ^ (b ^ c) modulo 10 ^ 9+7.
-// Note that in this task we assume that 00=1.
+// Your task is to efficiently calculate values a ^ (b ^ c) modulo 10 ^ 9 + 7.
+// Note that in this task we assume that 0 ^ 0=1.
 
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);

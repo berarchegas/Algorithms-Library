@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2229
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to count the number of permutations of 1,2 ...,n that have exactly k inversions 
+// (i.e., pairs of elements in the wrong order).
+// For example, when n=4 and k=3, there are 6 such permutations
+
 #include <bits/stdc++.h>
  
 using namespace std;

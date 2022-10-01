@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2113
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given two integer sequences: a signal and a mask. 
+// Your task is to process the signal by moving the mask through the signal from left to right. 
+// At each mask position calculate the sum of products of aligned signal and mask values in the part 
+// where the signal and the mask overlap.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

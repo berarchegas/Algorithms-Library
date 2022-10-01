@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/2425
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You have n coins, each of which has a distinct weight.
+// There are two stacks which are initially empty. 
+// On each step you move one coin to a stack. You never remove a coin from a stack.
+// After each move, your task is to determine which stack is heavier 
+// (if we can be sure that either stack is heavier).
+
 #include <bits/stdc++.h>
  
 using namespace std;

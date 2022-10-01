@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2414
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// List A consists of n positive integers, and list B contains the sum of each element pair of list A.
+// For example, if A=[1,2,3], then B=[3,4,5], and if A=[1,3,3,3], then B=[4,4,4,6,6,6].
+// Given list B, your task is to reconstruct list A.
+
+
 #include <bits/stdc++.h>
  
 using namespace std;

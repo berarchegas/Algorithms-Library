@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1081
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given an array of n positive integers. 
+// Your task is to find two integers such that their greatest common divisor is as large as possible.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

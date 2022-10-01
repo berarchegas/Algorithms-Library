@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1726
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Each square of an 8×8 chessboard has a robot. Each robot independently moves k steps, 
+// and there can be many robots on the same square.
+// On each turn, a robot moves one step left, right, up or down, but not outside the board. 
+// It randomly chooses a direction among those where it can move.
+// Your task is to calculate the expected number of empty squares after k turns.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

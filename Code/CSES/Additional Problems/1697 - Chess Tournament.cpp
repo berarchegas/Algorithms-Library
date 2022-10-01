@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1697
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There will be a chess tournament of n players. 
+// Each player has announced the number of games they want to play.
+// Each pair of players can play at most one game. 
+// Your task is to determine which games will be played so that everybody will be happy.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

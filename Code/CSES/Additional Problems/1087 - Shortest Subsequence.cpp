@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1087
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a DNA sequence consisting of characters A, C, G, and T.
+// Your task is to find the shortest DNA sequence that is not a subsequence of the original sequence.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 2000100

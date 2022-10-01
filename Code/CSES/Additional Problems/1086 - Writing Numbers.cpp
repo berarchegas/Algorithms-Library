@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/1086
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You would like to write a list of positive integers 1,2,3 ... using your computer. 
+// However, you can press each key 0–9 at most n times during the process.
+// What is the last number you can write?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

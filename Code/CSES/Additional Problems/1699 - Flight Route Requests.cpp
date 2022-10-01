@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1699
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n cities with airports but no flight connections. 
+// You are given m requests which routes should be possible to travel.
+// Your task is to determine the minimum number of one-way flight connections 
+// which makes it possible to fulfil all requests.
+
+
 #include <bits/stdc++.h>
  
 using namespace std;

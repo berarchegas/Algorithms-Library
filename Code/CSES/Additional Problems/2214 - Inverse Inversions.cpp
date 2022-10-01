@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2214
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to create a permutation of numbers 1,2,...,n that has exactly k inversions.
+// An inversion is a pair (a,b) where a<b and pa>pb where pi denotes the number at position i in the permutation.
+
 #include <bits/stdc++.h>
  
 using namespace std;

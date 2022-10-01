@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2112
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a binary string of length n and your task is to calculate for every k
+//  between 1...n−1 the number of ways we can choose two positions i and j such that i−j=k 
+// and there is a one-bit at both positions.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

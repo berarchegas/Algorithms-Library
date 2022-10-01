@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/2102
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string and patterns, check for each pattern if it appears in the string.
+
 #include <iostream>
 #include <algorithm>
 #include <queue>

@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/2103
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string and patterns, count for each pattern the number of positions where it appears in the string.
+
 #include <iostream>
 #include <algorithm>
 #include <queue>

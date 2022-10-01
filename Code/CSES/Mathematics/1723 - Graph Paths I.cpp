@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1723
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Consider a directed graph that has n nodes and m edges. 
+// Your task is to count the number of paths from node 1 to node n with exactly k edges.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

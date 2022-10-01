@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2064
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to calculate the number of valid bracket sequences of length n. 
+// For example, when n=6, there are 5 sequences
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2176
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to count the number of ways k bishops can be placed on an n x n chessboard 
+// so that no two bishops attack each other.
+// Two bishops attack each other if they are on the same diagonal.
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1189
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n children around a round table. 
+// For each child, you know the amount of food they currently have and the amount of food they want. 
+// The total amount of food in the table is correct.
+// At each step, a child can give one unit of food to his or her neighbour. 
+// What is the minimum number of steps needed?
+
 #include <bits/stdc++.h>
  
 using namespace std;

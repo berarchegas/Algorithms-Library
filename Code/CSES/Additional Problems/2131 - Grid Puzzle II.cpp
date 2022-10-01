@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2131
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is an n x n grid whose each square has some number of coins in it.
+// You know for each row and column how many squares you must choose from that row or column. 
+// You get all coins from every square you choose. What is the maximum number of coins you can collect 
+// and how could you choose the squares so that the given conditions are satisfied?
+
 #include <bits/stdc++.h>
  
 using namespace std;

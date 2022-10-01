@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2180
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is a 2 x n grid whose each cell contains some number of coins. The total number of coins is 2n.
+// Your task is to arrange the coins so that each cell contains exactly one coin. 
+// On each move you can choose any coin and move it one step left, right, up or down.
+// What is the minimum number of moves if you act optimally?
+
 #include <bits/stdc++.h>
  
 using namespace std;

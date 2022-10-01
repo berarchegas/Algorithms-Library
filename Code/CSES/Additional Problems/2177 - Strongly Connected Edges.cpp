@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2177
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given an undirected graph, your task is to choose a direction 
+// for each edge so that the resulting directed graph is strongly connected.
+
 #include <bits/stdc++.h>
  
 using namespace std;

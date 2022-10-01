@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1142
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A fence consists of n vertical boards. The width of each board is 1 and their heights may vary.
+// You want to attach a rectangular advertisement to the fence. What is the maximum area of such an advertisement?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

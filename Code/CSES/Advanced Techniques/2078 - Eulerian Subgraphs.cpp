@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2078
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given an undirected graph that has n nodes and m edges.
+// We consider subgraphs that have all nodes of the original graph and some of its edges. 
+// A subgraph is called Eulerian if each node has even degree.
+// Your task is to count the number of Eulerian subgraphs modulo 10 ^9+7.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

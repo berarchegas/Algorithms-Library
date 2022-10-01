@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1075
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A permutation of integers 1,2,...,n is called beautiful if there are no adjacent elements whose difference is 1.
+// Given n, your task is to count the number of beautiful permutations.
+
 #include <bits/stdc++.h>
  
 using namespace std;

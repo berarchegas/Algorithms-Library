@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2189
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is a line that goes through the points p1=(x1,y1) and p2=(x2,y2). There is also a point p3=(x3,y3).
+// Your task is to determine whether p3 is located on the left or right side of the line or 
+// if it touches the line when we are looking from p1 to p2.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

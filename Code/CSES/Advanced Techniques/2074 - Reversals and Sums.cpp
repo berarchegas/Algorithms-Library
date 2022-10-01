@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2074
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given an array of n integers, you have to process following operations:
+//     reverse a subarray
+//     calculate the sum of values in a subarray
+
 #include <bits/stdc++.h>
  
 using namespace std;

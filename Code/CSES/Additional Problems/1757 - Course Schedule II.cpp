@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1757
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You want to complete n courses that have requirements of the form "course a has to be completed before course b".
+// You want to complete course 1 as soon as possible. If there are several ways to do this, 
+// you want then to complete course 2 as soon as possible, and so on.
+// Your task is to determine the order in which you complete the courses.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

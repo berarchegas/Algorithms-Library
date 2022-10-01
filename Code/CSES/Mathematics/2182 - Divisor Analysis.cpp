@@ -4,6 +4,13 @@
 // Problem Link: https://cses.fi/problemset/task/2182
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given an integer, your task is to find the number, sum and product of its divisors. % MOD
+// As an example, let us consider the number 12:
+//     the number of divisors is 6 (they are 1, 2, 3, 4, 6, 12)
+//     the sum of divisors is 1+2+3+4+6+12=28
+//     the product of divisors is 1⋅2⋅3⋅4⋅6⋅12=1728
+// Since the input number may be large, it is given as a prime factorization.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

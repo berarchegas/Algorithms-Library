@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2426
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A company wants to hire a programmers and b artists.
+// There are a total of n applicants, and each applicant can become either a programmer or an artist. 
+// You know each applicant's programming and artistic skills.
+// Your task is to select the new employees so that the sum of their skills is maximum.
+
 #include <bits/stdc++.h>
  
 using namespace std;

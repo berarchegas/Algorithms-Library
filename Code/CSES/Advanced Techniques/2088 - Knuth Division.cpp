@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2088
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given an array of n numbers, your task is to divide it into n subarrays, each of which has a single element.
+// On each move, you may choose any subarray and split it into two subarrays. 
+// The cost of such a move is the sum of values in the chosen subarray.
+// What is the minimum total cost if you act optimally?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

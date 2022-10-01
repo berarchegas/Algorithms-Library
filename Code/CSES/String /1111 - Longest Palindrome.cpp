@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1111
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string, your task is to determine the longest palindromic substring of the string. 
+// For example, the longest palindrome in aybabtu is bab.
+// Manacher O(n), calcula o maior palindromo que comeca em toda posicao
+
+
 #include <bits/stdc++.h>
  
 using namespace std;

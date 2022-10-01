@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2133
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Consider an undirected graph that consists of n nodes and m edges. There are two types of events that can happen:
+//     A new edge is created between nodes a and b
+//     An existing edge between nodes a and b is removed.
+// Your task is to report the number of components after every event.
+
 #include <bits/stdc++.h>
     
 using namespace std;

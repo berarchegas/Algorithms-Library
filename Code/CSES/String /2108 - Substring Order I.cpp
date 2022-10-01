@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2108
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a string of length n. 
+// If all of its distinct substrings are ordered lexicographically, what is the kth smallest of them?
+
 #include <bits/stdc++.h>
     
 using namespace std;

@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2185
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given k distinct prime numbers a1,a2,…,ak and an integer n.
+// Your task is to calculate how many of the first n positive integers 
+// are divisible by at least one of the given prime numbers.
+// Inclusao exclusao classica
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

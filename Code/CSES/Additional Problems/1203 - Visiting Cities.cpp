@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1203
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You want to travel from Syrjälä to Lehmälä by plane using a minimum-price route. 
+// Which cities will you certainly visit?
+
 #include <bits/stdc++.h>
  
 using namespace std;

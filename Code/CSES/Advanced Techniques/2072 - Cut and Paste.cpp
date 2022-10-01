@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2072
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string, your task is to process operations 
+// where you cut a substring and paste it to the end of the string. 
+// What is the final string after all the operations?
+
 #include <bits/stdc++.h>
  
 using namespace std;

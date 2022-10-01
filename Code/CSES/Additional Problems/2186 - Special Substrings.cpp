@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2186
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A substring is called special if every character that appears in the string 
+// appears the same number of times in the substring.
+// Your task is to count the number of special substrings in a given string.
+
 #include <bits/stdc++.h>
  
 using namespace std;

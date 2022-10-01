@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1188
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is a bit string consisting of n bits. Then, there are some changes that invert one given bit. 
+// Your task is to report, after each change, the length of the longest substring whose each bit is the same.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2075
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You have an array that contains a permutation of integers 1,2,…,n. 
+// Your task is to sort the array in increasing order by reversing subarrays. 
+// You can construct any solution that has at most n reversals.
+
 #include <bits/stdc++.h>
  
 using namespace std;

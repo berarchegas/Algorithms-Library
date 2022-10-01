@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2432
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is an n x n grid, and your task is to choose from each row and column some number of squares. 
+// How can you do that?
+
 #include <bits/stdc++.h>
  
 using namespace std;

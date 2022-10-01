@@ -4,6 +4,13 @@
 // Problem Link: https://cses.fi/problemset/task/1747
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given an array consisting of n distinct integers. 
+// On each move, you can swap any two adjacent values.
+// You want to transform the array into a pyramid array. 
+//This means that the final array has to be first increasing and then decreasing. 
+// It is also allowed that the final array is only increasing or decreasing.
+// What is the minimum number of moves needed?
+
 #include <bits/stdc++.h>
  
 using namespace std;

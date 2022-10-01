@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2210
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to count the number of different n×n grids whose each square is black or white.
+// Two grids are considered to be different if it is not possible to rotate one of them so that they look the same.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

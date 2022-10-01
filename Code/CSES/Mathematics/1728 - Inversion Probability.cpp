@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/1728
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// An array has n integers x1,x2, ... xn, and each of them has been randomly chosen between 1 and ri. 
+// An inversion is a pair (a,b) where a<b and xa>xb.
+// What is the expected number of inversions in the array?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

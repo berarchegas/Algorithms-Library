@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1078
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Consider an n x n grid whose top-left square is (1,1) and bottom-right square is (n,n).
+// Your task is to move from the top-left square to the bottom-right square. 
+//On each step you may move one square right or down. 
+// In addition, there are m traps in the grid. You cannot move to a square with a trap.
+// What is the total number of possible paths?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 100100

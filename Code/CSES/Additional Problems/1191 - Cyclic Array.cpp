@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1191
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a cyclic array consisting of n values. Each element has two neighbors; 
+// the elements at positions n and 1 are also considered neighbors.
+// Your task is to divide the array into subarrays so that the sum of each subarray is at most k. 
+// What is the minimum number of subarrays?
+
+
 #include <bits/stdc++.h>
  
 using namespace std;

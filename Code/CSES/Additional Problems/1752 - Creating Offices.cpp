@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1752
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n cities and n−1 roads between them. 
+// There is a unique route between any two cities, and their distance is the number of roads on that route.
+// A company wants to have offices in some cities,
+// but the distance between any two offices has to be at least d. 
+// What is the maximum number of offices they can have?
+
 #include <bits/stdc++.h>
  
 using namespace std;

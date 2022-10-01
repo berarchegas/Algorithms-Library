@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/1709
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There is an n x n grid whose each square is empty or has a coin. 
+// On each move, you can remove all coins in a row or column.
+// What is the minimum number of moves after which the grid is empty?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

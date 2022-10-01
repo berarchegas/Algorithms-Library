@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1147
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a map of a forest where some squares are empty and some squares have trees.
+// What is the maximum area of a rectangular building that can be placed in the forest so that no trees must be cut down?
+
 #include <bits/stdc++.h>
  
 using namespace std;

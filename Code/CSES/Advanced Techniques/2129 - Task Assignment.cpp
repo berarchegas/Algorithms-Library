@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2129
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A company has n employees and there are n tasks that need to be done. 
+// We know for each employee the cost of carrying out each task. Every employee should be assigned to exactly one task. 
+// What is the minimum total cost if we assign the tasks optimally and how could they be assigned?
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/1146
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Your task is to count the number of one bits in the binary representations of integers between 1 and n.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100
@@ -24,7 +26,8 @@ int main () { _
 	cin >> n;
 	ll ans = 0, aux, add, two;
 	n++;
-	for (int i = 0; i <= 50; i++) {
+
+	for (int i = 0; i <= 60; i++) {
 		two = (1ll<<i);
 		aux = n - two;
 		if (aux < 0) break;

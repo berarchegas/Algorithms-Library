@@ -4,6 +4,13 @@
 // Problem Link: https://cses.fi/problemset/task/1702
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are three common ways to traverse the nodes of a binary tree:
+//     Preorder: First process the root, then the left subtree, and finally the right subtree.
+//     Inorder: First process the left subtree, then the root, and finally the right subtree.
+//     Postorder: First process the left subtree, then the right subtree, and finally the root.
+// There is a binary tree of n nodes with distinct labels. 
+// You are given the preorder and inorder traversals of the tree, and your task is to determine its postorder traversal.
+
 #include <bits/stdc++.h>
  
 using namespace std;

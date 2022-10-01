@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1159
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are in a book shop which sells n different books. 
+// You know the price, the number of pages and the number of copies of each book.
+// You have decided that the total price of your purchases will be at most x. 
+// What is the maximum number of pages you can buy? You can buy several copies of the same book.
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,8 @@
 // Problem Link: https://cses.fi/problemset/task/2104
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string and patterns, find for each pattern the first position (1-indexed) where it appears in the string.
+
 #include <iostream>
 #include <algorithm>
 #include <queue>

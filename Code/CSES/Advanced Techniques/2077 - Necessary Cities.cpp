@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2077
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n cities and m roads between them. There is a route between any two cities.
+// A city is called necessary if there is no route between some other two cities after removing 
+// that city (and adjacent roads). Your task is to find all necessary cities.
+
+
 #include <bits/stdc++.h>
  
 using namespace std;

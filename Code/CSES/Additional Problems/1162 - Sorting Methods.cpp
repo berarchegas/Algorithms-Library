@@ -4,6 +4,13 @@
 // Problem Link: https://cses.fi/problemset/task/1162
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Here are some possible methods using which we can sort the elements of an array in increasing order:
+//     At each step, choose two adjacent elements and swap them.
+//     At each step, choose any two elements and swap them.
+//     At each step, choose any element and move it to another position.
+//     At each step, choose any element and move it to the front of the array.
+// Given a permutation of numbers 1,2,…,n, calculate the minimum number of steps to sort the array using the above methods.
+
 #include <bits/stdc++.h>
  
 using namespace std;

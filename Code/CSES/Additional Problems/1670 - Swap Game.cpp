@@ -4,6 +4,19 @@
 // Problem Link: https://cses.fi/problemset/task/1670
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a 3 x 3 grid containing the numbers 1,2 ...,9. 
+// Your task is to perform a sequence of moves so that the grid will look like this:
+// 1 2 3
+// 4 5 6
+// 7 8 9
+// On each move, you can swap the numbers in any two adjacent squares (horizontally or vertically). 
+// What is the minimum number of moves required?
+
+// Se a gnt so pudesse fazer os swaps com o numero 1, seria equivalente ao jogo de deslizar
+// No jogo de deslizar, soh eh possivel resolver um tabuleiro de tamanho impar sse o numero de inversoes for par
+// para um tabuleiro de tamanho par, soh eh possivel sse o numero de inversoes + linha do quadrado vazio
+// (0-indexado) for par
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

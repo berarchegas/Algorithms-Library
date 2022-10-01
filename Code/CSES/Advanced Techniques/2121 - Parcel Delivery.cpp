@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2121
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n cities and m routes through which parcels can be carried from one city to another city. ]
+// For each route, you know the maximum number of parcels and the cost of a single parcel.
+// You want to send k parcels from Syrjälä to Lehmälä. What is the cheapest way to do that?
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/2101
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are n cities in Byteland but no roads between them. However, each day, 
+// a new road will be built. There will be a total of m roads.
+// Your task is to process q queries of the form: "after how many days 
+// can we travel from city a to city b for the first time?"
+
 #include <bits/stdc++.h>
  
 using namespace std;

@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1748
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+//Given an array of n integers, your task is to calculate the number of increasing subsequences it contains. 
+// If two subsequences have the same values but in different positions in the array, they are counted separately.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/1704
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Syrjala's network consists of n computers and n - 1 connections between them. 
+// It is possible to send data between any two computers.
+// However, if any connection breaks down, it will no longer be possible to send data between some computers. 
+// Your task is to add the minimum number of new connections in such a way that 
+// you can still send data between any two computers even if any single connection breaks down.
+
 #include <bits/stdc++.h>
  
 using namespace std;

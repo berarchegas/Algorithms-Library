@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2190
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are two line segments: the first goes through the points (x1,y1) and (x2,y2), 
+// and the second goes through the points (x3,y3) and (x4,y4).
+// Your task is to determine if the line segments intersect, i.e., they have at least one common point.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

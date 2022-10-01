@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/1725
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You throw a dice n times, and every throw produces an outcome between 1 and 6. 
+// What is the probability that the sum of outcomes is between a and b?
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 100100

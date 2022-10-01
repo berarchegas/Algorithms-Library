@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1149
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given a string. You can remove any number of characters from it, 
+// but you cannot change the order of the remaining characters.
+// How many different strings can you generate?
+
+
 #include <bits/stdc++.h>
  
 using namespace std;

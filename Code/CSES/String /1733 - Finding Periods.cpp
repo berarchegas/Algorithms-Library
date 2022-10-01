@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/1733
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A period of a string is a prefix that can be used to generate the whole string by repeating the prefix. 
+// The last repetition may be partial. For example, the periods of abcabca are abc, abcabc and abcabca.
+// Your task is to find all period lengths of a string.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

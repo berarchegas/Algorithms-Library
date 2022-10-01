@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2184
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You have n coins with positive integer values. The coins are numbered 1,2,...,n.
+// Your task is to process q queries of the form: "if you can use coins a…b, what is the smallest sum you cannot produce?"
+
 #include <bits/stdc++.h>
 using namespace std; 
  

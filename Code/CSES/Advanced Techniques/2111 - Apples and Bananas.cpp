@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2111
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// There are apples and bananas and each of them has an integer weight between 1...k. 
+// Your task is to calculate for each weight w between 2...2k the number of ways we 
+// can choose an apple and a banana whose combined weight is w.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

@@ -4,6 +4,12 @@
 // Problem Link: https://cses.fi/problemset/task/2130
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A game consists of n rooms and m teleporters. 
+// At the beginning of each day, you start in room 1 and you have to reach room n.
+// You can use each teleporter at most once during the game. You want to play the game for exactly k days. 
+// Every time you use any teleporter you have to pay one coin. 
+// What is the minimum number of coins you have to pay during k days if you play optimally?
+
 #include <bits/stdc++.h>
  
 using namespace std;

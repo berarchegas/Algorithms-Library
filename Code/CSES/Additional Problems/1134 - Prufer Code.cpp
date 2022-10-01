@@ -4,6 +4,11 @@
 // Problem Link: https://cses.fi/problemset/task/1134
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A Prüfer code of a tree of n nodes is a sequence of n - 2 integers that uniquely specifies the structure of the tree.
+// The code is constructed as follows: As long as there are at least three nodes left, find a leaf with the smallest label, 
+// add the label of its only neighbor to the code, and remove the leaf from the tree.
+// Given a Prüfer code of a tree, your task is to construct the original tree.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 200100

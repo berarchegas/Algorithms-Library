@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2419
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Consider a xor pyramid where each number is the xor of lower-left and lower-right numbers.
+// Given the bottom row of the pyramid, your task is to find the topmost number.
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 2000100

@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2138
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// A directed acyclic graph consists of n nodes and m edges. The nodes are numbered 1,2,...n.
+// Calculate for each node the number of nodes you can reach from that node (including the node itself).
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 50100

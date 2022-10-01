@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2073
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a string, your task is to process operations where you reverse a substring of the string. 
+// What is the final string after all the operations?
+
 #include <bits/stdc++.h>
  
 using namespace std;

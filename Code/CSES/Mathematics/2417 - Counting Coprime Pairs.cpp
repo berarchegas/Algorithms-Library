@@ -4,6 +4,10 @@
 // Problem Link: https://cses.fi/problemset/task/2417
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// Given a list of n positive integers, your task is to 
+// count the number of pairs of integers that are coprime 
+// (i.e., their greatest common divisor is one).
+
 #include <bits/stdc++.h>
 #define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define MAXN 1000100

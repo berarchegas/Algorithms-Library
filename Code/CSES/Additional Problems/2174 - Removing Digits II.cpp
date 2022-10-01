@@ -4,6 +4,9 @@
 // Problem Link: https://cses.fi/problemset/task/2174
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
+// You are given an integer n. On each step, you may substract from it any one-digit number that appears in it.
+// How many steps are required to make the number equal to 0?
+
 #include <bits/stdc++.h>
  
 using namespace std;
