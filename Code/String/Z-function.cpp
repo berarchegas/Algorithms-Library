@@ -1,3 +1,5 @@
+// Z-function
+//
 
 vector<int> z_function(string s) {
     int n = (int) s.length();

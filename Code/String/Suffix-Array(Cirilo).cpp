@@ -1,3 +1,6 @@
+// Suffix Array
+//
+
 const int MAXB = 20;
  
 struct suffix_array{

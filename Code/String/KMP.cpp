@@ -1,3 +1,6 @@
+// KMP
+//
+
 vector<int> prefix_function(string s) {
     int n = (int)s.length();
     vector<int> pi(n);
