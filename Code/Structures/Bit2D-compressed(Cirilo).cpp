@@ -1,4 +1,4 @@
-//BIT 2D
+// BIT 2D
 //
 
 struct bit2d{
