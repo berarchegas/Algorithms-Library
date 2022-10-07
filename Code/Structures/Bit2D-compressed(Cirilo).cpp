@@ -1,3 +1,5 @@
+//BIT 2D
+
 struct bit2d{
     vector<int> x;
     vector<vector<int>> y, bit;
