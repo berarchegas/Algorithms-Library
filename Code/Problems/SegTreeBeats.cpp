@@ -1,41 +1,3 @@
-cMORAX
-#8823
-
-berarchegas
- — 
-10/14/2021
-Dae mano tranquilo?
-Eu e o morato tamo escrevendo um editorial da maratona interna da unicamp
-Aí podemos usar teu código em algumas questões?
-O teu ficou bem clean
-cMORAX
- — 
-10/14/2021
-pode sim
-sem problema
-berarchegas
- — 
-10/14/2021
-Brabo, vlw
-berarchegas
- — 
-05/22/2022
-https://discord.gg/JNpwYptk
-cMORAX
- — 
-05/22/2022
-https://codeforces.com/profile/SmurfDePrata1
-Codeforces
-SmurfDePrata1 - Codeforces
-Image
-cMORAX
- — 
-08/11/2022
-https://discord.gg/evUnsdS3
-cMORAX
- — 
-10/05/2022
-
 // Seg Beats
 //
 struct seg{
@@ -84,7 +46,7 @@ struct seg{
  
         map<int,int> mapa;
         mapa[fe->mix] += fe->qmix;
-        mapa[fd->mix] += fd->qmix;
+        mapa[fd->mix] += fd->qmix37cc0d1;
         mapa[fe->smix] = 1;
         mapa[fd->smix] = 1;
  
