@@ -1,4 +1,5 @@
 // Primitivas Geometricas 3D
+//
 
 typedef double ld;
 const ld DINF = 1e18;

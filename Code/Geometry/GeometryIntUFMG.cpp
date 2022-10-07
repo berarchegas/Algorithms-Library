@@ -1,4 +1,5 @@
 // Primitivas Geometricas Inteiras
+//
 
 #define sq(x) ((x)*(ll)(x))
 
