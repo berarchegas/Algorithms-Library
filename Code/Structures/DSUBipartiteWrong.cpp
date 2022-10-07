@@ -1,4 +1,4 @@
-// Union find (DSU)
+// Union find (DSU) bipartido
 // com bipartição (errado)
 
 class DSU {
