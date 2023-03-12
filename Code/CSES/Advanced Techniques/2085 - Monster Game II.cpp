@@ -1,7 +1,7 @@
-// Monster Game I
+// Monster Game II
 //
-// Problem name: Monster Game I
-// Problem Link: https://cses.fi/problemset/task/2084
+// Problem name: Monster Game II
+// Problem Link: https://cses.fi/problemset/task/2085
 // Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
 
 // You are playing a game that consists of n levels. Each level has a monster. 
@@ -11,8 +11,8 @@
 // and f is your skill factor (lower skill factor is better). After killing a monster, 
 // you get a new skill factor. What is the minimum total time in which you can win the game?
 // The first input line has two integers n and x: the number of levels and your initial skill factor.
-// The second line has n integers s1 <= s2 <= ...,sn: each monster's strength.
-// The third line has n integers f1 >= f2 >= ...,fn: your new skill factor after killing a monster.
+// The second line has n integers s1, s2,...,sn: each monster's strength.
+// The third line has n integers f1, f2, ...,fn: your new skill factor after killing a monster.
 
 #include <bits/stdc++.h>
     
