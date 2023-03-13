@@ -1,5 +1,6 @@
 // Suffix Array
 //
+// Para MAXN = 1e6, MAXB deve ser maior que 20
 
 const int MAXB = 20;
  
