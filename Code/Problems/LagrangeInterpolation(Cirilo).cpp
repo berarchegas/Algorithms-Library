@@ -61,6 +61,8 @@ int inter(int x){
  
   return res;
 }
+
+// Radeck eh baitola
  
 signed main(){
   cin >> n >> k;
