@@ -12,7 +12,10 @@ ll prox(ll a) {
 	return (a + (a>>20) + 12345) % m;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e9720fd20a913e38f707131d746541e75941a78
 array<ll, 3> floyd() {
 
     // retornar a distancia ate o ciclo, inicio do ciclo e tamanho do ciclo

@@ -2,6 +2,7 @@
 //
 // O(N) preprocessing, O(1) query Range Minimum Query
 // qry(l, r) returns min from l to r - 1 (0 indexed)
+
 template<class T>
 class FastRMQ {
 public:
