@@ -1,3 +1,14 @@
+// New Flight Routes
+//
+// Problem name: New Flight Routes
+// Problem Link: https://cses.fi/problemset/task/1685
+// Author: Bernardo Archegas (https://codeforces.com/profile/Ber)
+
+// There are n cities and m flight connections between them. 
+// Your task is to add new flights so that it will be possible to travel from any city to any other city.
+// What is the minimum number of new flights required?
+// Print any optimal solution (hard part)
+
 #include <bits/stdc++.h>
  
 using namespace std;
@@ -10,10 +21,10 @@ mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
 const int MOD = 1e9 + 7;
 const int MAXN = 1e5 + 5;
 const ll INF = 2e18;
-
+ 
 int rep[MAXN], vis[MAXN], cmp[MAXN], cnt;
 vector<int> v[MAXN], w[MAXN], nv[MAXN], nw[MAXN], src, snk, ord;
-
+ 
 void dfs1(int node) {
     vis[node] = 1;
     for (int x : v[node]) {
@@ -21,7 +32,7 @@ void dfs1(int node) {
     }
     ord.push_back(node);
 }
-
+ 
 void dfs2(int node) {
     vis[node] = 1;
     cmp[node] = cnt;
@@ -30,7 +41,7 @@ void dfs2(int node) {
         if (!vis[x]) dfs2(x);
     }
 }
-
+ 
 void dfs3(int node) {
     vis[node] = 1;
     if (nv[node].empty()) snk.push_back(node);
@@ -42,7 +53,7 @@ void dfs3(int node) {
         if (!vis[x]) dfs3(x);
     }
 }
-
+ 
 int dfs4(int node) {
     int ans = -1;
     vis[node] = 1;
@@ -55,7 +66,7 @@ int dfs4(int node) {
     }
     return ans;
 }
-
+ 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
