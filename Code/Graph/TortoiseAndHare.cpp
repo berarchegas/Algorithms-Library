@@ -12,10 +12,6 @@ ll prox(ll a) {
 	return (a + (a>>20) + 12345) % m;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 7e9720fd20a913e38f707131d746541e75941a78
 array<ll, 3> floyd() {
 
     // retornar a distancia ate o ciclo, inicio do ciclo e tamanho do ciclo
@@ -30,7 +26,6 @@ array<ll, 3> floyd() {
         fast = prox(prox(fast));
     } while(slow != fast);
 
-    // cout << "FASE 1 COMPLETA" << endl;
 
     // depois voltamos um deles para o comeco e andamos ate que eles se encontrem dnv
     slow = 1611516670;
@@ -40,7 +35,6 @@ array<ll, 3> floyd() {
         fast = prox(fast);
     }
 
-    // cout << "FASE 2 COMPLETA" << endl;
     
     // calcula o tamanho do ciclo
     ans[1] = slow;
