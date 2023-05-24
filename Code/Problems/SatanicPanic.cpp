@@ -2,7 +2,7 @@
 //
 // Given n points with no three collinear
 // Counts the number of k-sided convex polygons
-// O(k * n^2)
+// O(k * n^3)
 
 #include <bits/stdc++.h>
 using namespace std;
