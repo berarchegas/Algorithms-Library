@@ -9,22 +9,22 @@
 // There are m pairs of children who want to visit the same attraction. 
 // Your task is to find all possible alternatives for the number of children that will visit Korkeasaari. 
 // The children's wishes have to be taken into account.
-// Knapsack em Nsqrt(n)
+// Knapsack em Nsqrt(n)/32
 
 #include <bits/stdc++.h>
-#define _ ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define MAXN 100100
-#define INF 1e18
-#define pb push_back
-#define F first
-#define S second
  
 using namespace std;
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-const int M = 1e9+7;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+ 
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+    
+const int MOD = 1e9 + 7;
+const int MAXN = 2e5 + 5;
+const ll INF = 2e18;
+ 
+const ll base = 1e12;
  
 vector<int> v[MAXN], vals;
 int vis[MAXN], cnt, dp[MAXN], used[MAXN], have[MAXN];
@@ -35,37 +35,38 @@ void dfs(int node) {
 	for (int x : v[node]) 
 		if (!vis[x]) dfs(x);
 }
- 
-int main() { _
-	int n, m, a, b;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m, a, b;
 	cin >> n >> m;
 	for (int i = 0; i < m; i++) {
 		cin >> a >> b;
-		v[a].pb(b);
-		v[b].pb(a);
+		v[a].push_back(b);
+		v[b].push_back(a);
 	}
 	for (int i = 1; i <= n; i++) {
 		if (!vis[i]) {
 			cnt = 0;
 			dfs(i);
-			vals.pb(cnt);
+			vals.push_back(cnt);
 		}
 	}
-	sort(vals.begin(), vals.end());
 	for (int x : vals) have[x]++;
-	vals.erase(unique(vals.begin(), vals.end()), vals.end());
-	dp[0] = 1;
-	for (int x : vals) {
-		memset(used, 0, sizeof(used));
-		for (int i = 0; i <= n; i++) {
-			if (i + x > n) break;
-			if (dp[i] && !dp[i+x] && used[i] < have[x]) {
-				used[i+x] = used[i]+1;
-				dp[i+x] = 1;
-			}
-		}
-	}
-	for (int i = 1; i <= n; i++) cout << dp[i];
-	cout << '\n';
+    bitset<200010> dp;
+    dp[0] = 1;
+    for (int i = 1; i < 100005; i++) {
+        while (have[i] > 2) {
+            have[i] -= 2;
+            have[2 * i]++;
+        }
+        while (have[i]--) {
+            dp |= (dp << i);
+        }
+    }
+    
+    for (int i = 1; i <= n; i++) cout << dp[i];
+    cout << '\n';
     return 0;
 }
